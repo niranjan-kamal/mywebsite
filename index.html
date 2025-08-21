@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Niranjan | Quant Finance</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f12; --card:#14161a; --card-2:#1a1d22; --text:#e8e8e8; --muted:#a4a7ae;
+      --accent:#6ee7ff; --accent-2:#c084fc; --ring:#2a87ff33; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, #1b1f2a 0%, transparent 60%), var(--bg);
+      color:var(--text); line-height:1.6;
+      display:grid; place-items:center; padding:24px;
+    }
+    .wrap{width:100%; max-width:980px}
+
+    .card{
+      position:relative; overflow:clip; border-radius:clamp(16px,1.8vw,22px);
+      border:1px solid #242831; background: linear-gradient(180deg,var(--card-2),var(--card));
+      padding: clamp(18px,3.5vw,32px); box-shadow:var(--shadow);
+      display:grid; grid-template-columns:1fr; gap:22px; align-items:center;
+      isolation:isolate;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow:0 14px 32px rgba(0,0,0,.45); }
+    @media(min-width:880px){ .card{ grid-template-columns: 180px 1fr; gap: 28px; } }
+
+    .glow{ position:absolute; inset: -20% -10% auto auto; height:260px; width:600px; pointer-events:none; filter: blur(24px); opacity:.55;
+      background: radial-gradient(closest-side, #6ee7ff1a, transparent 70%), radial-gradient(closest-side, #c084fc1a, transparent 70%);
+      z-index:0; }
+
+    .pfp{
+      position:relative; width:160px; height:160px; border-radius:50%;
+      background:#0f1115; border:1px solid #262a31; object-fit:cover;
+    }
+    .pfp-wrap{ position:relative; place-self:center; }
+    .ring{ position:absolute; inset:-8px; border-radius:50%;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+      filter: blur(8px); opacity:.35; z-index:0; animation: spin 12s linear infinite; }
+    @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+    h1{ margin:0 0 4px; font-size: clamp(28px,4.4vw,44px); letter-spacing:-.02em; font-weight:800; }
+    h2{ margin:0; font-size: clamp(16px,2.4vw,22px); color:var(--muted); font-weight:600; }
+    p.lead{ margin:.6rem 0 0; color:#cbd5e1; max-width: 60ch; }
+
+    .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .badge{ padding:6px 10px; border-radius:999px; border:1px solid #2a2f36; background:#171a20; font-size:12px; }
+
+    .row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; cursor:pointer; text-decoration:none; color:#dbe6ff;
+      background:#12151a; border:1px solid #272b32; border-radius:12px; padding:10px 14px; font-weight:700;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color:#3a3f46; }
+    .btn.primary{ background: linear-gradient(180deg,#1d2229,#181c22); }
+
+    .links{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .iconbtn{
+      width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:#12151a; border:1px solid #272b32; color:#e7ecff;
+      transition: transform .15s ease, border-color .15s ease; text-decoration:none;
+    }
+    .iconbtn:hover{ transform: translateY(-1px); border-color:#3a3f46; }
+    .icon{ width:20px; height:20px; display:block; }
+
+    .grid{
+      display:grid; grid-template-columns:1fr; gap:16px; margin-top:12px;
+    }
+    @media(min-width:720px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+
+    .mini{
+      position:relative; padding:16px; border-radius:16px; border:1px solid #23262c;
+      background: linear-gradient(180deg,#14181f,#14161a); min-height:110px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .mini:hover{ transform: translateY(-3px); border-color:#2d323a; box-shadow:0 14px 32px rgba(0,0,0,.45); }
+    .mini h3{ margin:0 0 6px; font-size:16px; letter-spacing:-.01em; }
+    .mini p{ margin:0; color:#cbd5e1; font-size:14px; }
+
+    .kbd{ font:inherit; background:#101318; border:1px solid #272b32; padding:2px 6px; border-radius:8px; }
+
+    .footer{ margin-top:18px; color:#8b90a0; font-size:13px; text-align:center; }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" id="card">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="pfp-wrap">
+        <span class="ring" aria-hidden="true"></span>
+        <img src="profile.jpg" alt="Portrait of Niranjan" class="pfp" />
+      </div>
+
+      <div>
+        <header>
+          <h1>Niranjan Kamalakannan</h1>
+          <h2>Quant Finance @ UMD</h2>
+        </header>
+        <p class="lead">Building math models across risk and pricing. Decoding the markets with math.</p>
+
+        <div class="badges" aria-label="Highlights">
+          <span class="badge">Risk & Derivatives</span>
+          <span class="badge">Python</span>
+          <span class="badge">Fixed Income</span>
+        </div>
+
+        <div class="row" role="navigation" aria-label="Primary">
+          <a class="btn primary" href="work.html" aria-label="Go to work page">Work</a>
+          <a class="btn" href="projects.html" aria-label="Go to projects page">Projects</a>
+          <a class="btn" href="docs/Niranjan_CV_Smith.pdf" target="_blank" rel="noopener" aria-label="Open resume in new tab">Resume</a>
+        </div>
+
+        <div class="links" aria-label="Social links">
+          <a class="iconbtn" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2.1c-3.3.8-4-1.5-4-1.5-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 .1 2.9 1.9 1.2 2 3.1 1.4 3.9 1.1.1-.9.5-1.4.8-1.7-2.7-.3-5.6-1.4-5.6-6.2 0-1.4.5-2.6 1.2-3.6-.1-.3-.5-1.7.1-3.4 0 0 1-.3 3.5 1.3a12.1 12.1 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.6 1.7.2 3.1.1 3.4.8 1 1.2 2.2 1.2 3.6 0 4.9-2.9 5.9-5.6 6.2.5.4.9 1.2.9 2.5v3.7c0 .3.2.7.8.6 4.8-1.6 8.2-6.2 8.2-11.6A12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+          <a class="iconbtn" href="https://www.linkedin.com/in/niranjan-kamalakannan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7H9.32V9h3.4v1.56h.05c.47-.88 1.62-1.8 3.33-1.8 3.56 0 4.22 2.34 4.22 5.37v6.32ZM5.34 7.44a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          </a>
+          <a class="iconbtn" href="mailto:niranjak@umd.edu" aria-label="Email Niranjan">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+          </a>
+          <button class="iconbtn" id="copy" aria-label="Copy email to clipboard">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Copy email helper
+    const copyBtn = document.getElementById('copy');
+    copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText('niranjak@umd.edu');
+        copyBtn.style.borderColor = '#3a3f46';
+        copyBtn.style.transform = 'translateY(-1px)';
+        copyBtn.title = 'Copied!';
+        setTimeout(()=>{ copyBtn.removeAttribute('style'); copyBtn.title=''; }, 900);
+      } catch {}
+    });
+
+    // Keyboard shortcut hints (example: go to Work with "g w")
+    const keys = new Set();
+    window.addEventListener('keydown', (e) => {
+      keys.add(e.key.toLowerCase());
+      // g then w
+      if(keys.has('g') && e.key.toLowerCase()==='w') window.location.href = 'work.html';
+    });
+    window.addEventListener('keyup', (e) => { keys.delete(e.key.toLowerCase()); });
+  </script>
+</body>
+</html>

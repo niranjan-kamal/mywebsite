@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Niranjan</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0e0f12; --card:#14161a; --card-2:#1a1d22; --text:#e8e8e8; --muted:#a4a7ae; --accent:#6ee7ff; --accent-2:#c084fc; --ring:#2a87ff33; --shadow:0 10px 30px rgba(0,0,0,.35); --radius:16px; }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family:'Inter',sans-serif; background:radial-gradient(1200px 800px at 80% -10%, #1b1f2a 0%, transparent 60%), var(--bg); color:var(--text); line-height:1.6; padding:32px 16px; display:flex; flex-direction:column; align-items:center; }
+    h1{ font-size:clamp(28px,4vw,42px); font-weight:800; margin:0; letter-spacing:-.02em; }
+
+    .wrap{ width:100%; max-width:980px; }
+    .controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:18px 0 26px; }
+    .search{ background:var(--card); border:1px solid #2a2f36; color:var(--text); padding:10px 12px; border-radius:999px; outline:none; min-width:240px; }
+    .search:focus{ border-color:#355278; box-shadow:0 0 0 8px var(--ring); }
+    .pill{ background:var(--card); border:1px solid #2a2f36; color:var(--text); padding:8px 12px; border-radius:999px; cursor:pointer; }
+    .pill[aria-pressed="true"], .pill:hover{ border-color:#3a3f46; background:linear-gradient(180deg, var(--card-2), var(--card)); }
+
+    .grid{ display:grid; gap:18px; }
+
+    .project{ position:relative; background:linear-gradient(180deg,var(--card-2),var(--card)); border:1px solid #242831; border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+    .project:hover{ transform:translateY(-3px); border-color:#2d323a; box-shadow:0 16px 38px rgba(0,0,0,.45); }
+    .project {
+  margin-bottom: 24px; /* space between projects */
+}
+
+
+    .header{ display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; }
+    
+    .title {
+                font-size: 22px;
+                font-weight: 800;
+                letter-spacing: -0.01em;
+                background: linear-gradient(90deg, var(--accent), var(--accent-2));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-fill-color: transparent;
+              }
+    .org{ font-size:14px; color:var(--muted); }
+    .date{ font-size:13px; color:#8b90a0; }
+
+    ul{ margin:12px 0; padding-left:20px; }
+    li{ margin-bottom:8px; }
+
+    .skills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .skill{ background:#1a1d22; border:1px solid #2a2f36; padding:6px 10px; border-radius:999px; font-size:12px; color:#cbd5e1; cursor:pointer; }
+    .links{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .link{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:1px solid #2a2f36; background:#12151a; color:var(--text); text-decoration:none; font-weight:600; }
+    .link:hover{ transform:translateY(-1px); border-color:#3a3f46; }
+    .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.link:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+.link {
+  color: #111;       /* dark gray/black text */
+  font-weight: 700;  /* thicker */
+}
+
+
+
+    @media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Projects</h1>
+    <div class="controls">
+      <input id="search" class="search" type="search" placeholder="Search titles, orgs, bullets…" aria-label="Search projects" />
+      <button class="pill" data-filter="all" aria-pressed="true">All</button>
+      <button class="pill" data-filter="Python">Python</button>
+      <button class="pill" data-filter="Monte Carlo">Monte Carlo</button>
+      <button class="pill" data-filter="Basel III">Basel III</button>
+      <button class="pill" data-filter="Yield Curve">Yield Curve</button>
+    </div>
+
+    <!-- Stochastic IR Models -->
+    <article class="project" data-tags="Stochastic Processes,Yield Curve,Yield Curve Modelling,Bond Pricing,Python">
+      <div class="header">
+        <div>
+          <div class="title">Stochastic Interest rate modelling and bond pricing</div>
+          <div class="org">Associated with University of Maryland – Robert H. Smith School of Business</div>
+        </div>
+        <div class="date">Aug 2025 – Aug 2025</div>
+      </div>
+        
+      <ul>
+        <li><strong>Yield Curve Construction:</strong> Built initial term structures by calibrating Nelson–Siegel, Nelson–Siegel–Svensson, cubic spline, and linear interpolation models to market yield data.</li>
+        <li><strong>Model Implementation:</strong> Developed and implemented Vasicek and Cox–Ingersoll–Ross (CIR) stochastic interest rate models to capture mean‑reverting dynamics, reflecting realistic economic and market conditions.</li>
+        <li><strong>Bond & Derivative Pricing Framework:</strong> Created a pricing framework using the developed models to value fixed income securities, caps, floors, and bonds with embedded options, incorporating realistic interest rate movements.</li>
+        <li><strong>Calibration and Estimation:</strong> Performed market calibration using Maximum Likelihood Estimation (MLE) to estimate key parameters (speed of mean reversion, long‑term mean, volatility), ensuring alignment with observed rate movements.</li>
+        <li><strong>Model Comparison:</strong> Compared Vasicek and CIR models to evaluate differences and determine appropriate model selection under varying market conditions.</li>
+        <li><strong>Sensitivity and Scenario Analysis:</strong> Conducted sensitivity and scenario testing to evaluate the impact of various interest rate paths on valuations, informing risk/return characteristics of fixed‑income portfolios.</li>
+      </ul>
+      <div class="skills">
+        <button class="skill" data-tag>Stochastic Processes</button>
+        <button class="skill" data-tag>Yield Curve Modelling</button>
+        <button class="skill" data-tag>Bond Pricing</button>
+        <button class="skill" data-tag>Python</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/niranjan-kamal/yield_curve_and_stochastic_int_rate_modelling" class="link" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </article>
+
+    <!-- Options Monte Carlo -->
+    <article class="project" data-tags="Monte Carlo,Monte Carlo Simulation,Option Pricing,Option Pricing Models,Exotic Options,Python,Excel">
+      <div class="header">
+        <div>
+          <div class="title">Option Pricing Using Monte Carlo Simulations for European, Asian, and Barrier Options</div>
+          <div class="org">Associated with University of Maryland – Robert H. Smith School of Business</div>
+        </div>
+        <div class="date">Jun 2025 – Jul 2025</div>
+      </div>
+      <ul>
+        <li>Developed Monte Carlo simulation models for pricing European, Asian, and Barrier options, leveraging Geometric Brownian Motion (GBM) to simulate asset price paths and estimate payoffs under risk‑neutral measures.</li>
+        <li>Implemented advanced variance reduction techniques, including Antithetic Variates and Control Variates, to improve efficiency and accuracy.</li>
+        <li>Built an Excel‑based Monte Carlo framework integrating RNG, path‑dependent simulations, and statistical analysis for robust valuation and sensitivity analysis.</li>
+      </ul>
+      <div class="skills">
+        <button class="skill" data-tag>Monte Carlo Simulation</button>
+        <button class="skill" data-tag>Option Pricing Models</button>
+        <button class="skill" data-tag>Exotic Options</button>
+        <button class="skill" data-tag>Python</button>
+        <button class="skill" data-tag>Excel</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/niranjan-kamal/Options_pricing" class="link" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </article>
+
+    <!-- Credit Risk ML -->
+    <article class="project" data-tags="Python,Scikit-learn,Basel III,Basel III IRB standards,pandas,NumPy,Linear Regression,Logistic Regression,PD,LGD,EAD,Expected Loss">
+      <div class="header">
+        <div>
+          <div class="title">Credit Risk Modelling using PD, LGD and EAD models with Machine Learning Techniques</div>
+          <div class="org">Associated with University of Maryland – Robert H. Smith School of Business</div>
+        </div>
+        <div class="date">Apr 2025 – May 2025</div>
+      </div>
+      <ul>
+        <li>Developed an end‑to‑end credit risk pipeline using LendingClub data (2007–2014) to estimate PD, LGD, EAD, and combined Expected Loss (EL).</li>
+        <li>Analyzed and processed variables (loan status, DTI, employment length, home ownership); applied Weight of Evidence (WoE) and Information Value (IV) to encode categorical features for interpretability.</li>
+        <li>Validated PD, LGD, and EAD models in line with Basel III IRB standards, aligning with regulatory capital frameworks.</li>
+        <li>Built a logistic‑regression PD model with statistically significant variables; achieved AUROC 0.72, Gini 0.44, KS 0.3208 on the test set.</li>
+        <li>Created a credit scorecard; analyzed thresholds via TPR/FPR; monitored PD model with Population Stability Index (PSI) for drift detection.</li>
+        <li>Implemented a two‑stage LGD model: Stage 1 logistic regression to classify recovery (AUROC 64.8%), Stage 2 linear regression on recovered accounts (recovery rate &gt; 0) achieving RMSE 0.09.</li>
+        <li>Modeled EAD using linear regression on CCF‑based features; actual vs predicted correlation 53.06%.</li>
+        <li>Computed EL at account and portfolio levels; total expected loss $426.9M over $6.66B funded exposure (EL rate 6.41%).</li>
+      </ul>
+      <div class="skills">
+        <button class="skill" data-tag>Python</button>
+        <button class="skill" data-tag>Scikit-learn</button>
+        <button class="skill" data-tag>pandas</button>
+        <button class="skill" data-tag>NumPy</button>
+        <button class="skill" data-tag>Basel III</button>
+        <button class="skill" data-tag>Linear Regression</button>
+        <button class="skill" data-tag>Logistic Regression</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/niranjan-kamal/Credit-risk-modelling" class="link" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </article>
+
+    <!-- Market Risk VaR/CVaR -->
+    <article class="project" data-tags="Python,Excel,VaR,CVaR,Market Risk,Investment Portfolios">
+      <div class="header">
+        <div>
+          <div class="title">Market Risk: Build VaR and CvaR Model and backtest the VaR Model (Python, Excel)</div>
+          <div class="org">Associated with University of Maryland – Robert H. Smith School of Business</div>
+        </div>
+        <div class="date">Jan 2025 – Feb 2025</div>
+      </div>
+      <ul>
+        <li>Developed a VaR model using Historical Simulation, Variance‑Covariance, and Monte Carlo to estimate potential portfolio losses.</li>
+        <li>Implemented CVaR to assess tail risk, measuring extreme losses beyond the VaR threshold.</li>
+        <li>Backtested VaR with historical data to evaluate predictive accuracy and regulatory compliance.</li>
+        <li>Performed sensitivity analysis and stress testing to quantify shock impacts on VaR & CVaR and improve robustness.</li>
+      </ul>
+      <div class="skills">
+        <button class="skill" data-tag>Python</button>
+        <button class="skill" data-tag>Excel</button>
+        <button class="skill" data-tag>VaR</button>
+        <button class="skill" data-tag>CVaR</button>
+        <button class="skill" data-tag>Investment Portfolios</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/niranjan-kamal/Var-modelling" class="link" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
+    </article>
+
+    <!-- Black-Scholes Calculator -->
+    <article class="project" data-tags="Python,Streamlit,Black-Scholes,Web App">
+      <div class="header">
+        <div>
+          <div class="title">Black & Scholes Option Pricing Calculator</div>
+          <div class="org">Associated with University of Maryland – Robert H. Smith School of Business</div>
+        </div>
+        <div class="date">—</div>
+      </div>
+      <ul>
+        <li>Developed and deployed a web‑based Black‑Scholes calculator with dividend adjustments using Streamlit, designed to provide real‑time option pricing for traders and investors.</li>
+        <li>Calculates theoretical price of European‑style options using underlying price, strike, time to expiry, risk‑free rate, volatility, and dividend yield.</li>
+        <li>User‑friendly interface for both educational and practical trading applications.</li>
+      </ul>
+      <div class="skills">
+        <button class="skill" data-tag>Python</button>
+        <button class="skill" data-tag>Streamlit</button>
+        <button class="skill" data-tag>Black-Scholes</button>
+        <button class="skill" data-tag>Web App</button>
+      </div>
+      <div class="links">
+        <a href="https://black-and-scholes-calculator-niranjan-kamalakannan.streamlit.app/" class="link" target="_blank" rel="noopener">Live App</a>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const cards = [...document.querySelectorAll('.project')];
+    const pills = [...document.querySelectorAll('.pill')];
+    const search = document.getElementById('search');
+
+    let active = 'all';
+
+    function applyFilters(){
+      const q = (search.value||'').toLowerCase().trim();
+      cards.forEach(card=>{
+        const text = card.innerText.toLowerCase();
+        const tags = (card.getAttribute('data-tags')||'').split(',').map(s=>s.trim());
+        const matchesText = q==='' || text.includes(q);
+        const matchesTag = active==='all' || tags.includes(active);
+        card.style.display = (matchesText && matchesTag) ? '' : 'none';
+      });
+    }
+
+    pills.forEach(p=>p.addEventListener('click', ()=>{
+      active = p.dataset.filter;
+      pills.forEach(btn=>btn.setAttribute('aria-pressed', String(btn===p)));
+      applyFilters();
+    }));
+    search.addEventListener('input', applyFilters);
+
+    document.querySelectorAll('[data-tag]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        active = btn.textContent.trim();
+        pills.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.filter===active)));
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+  </script>
+</body>
+</html>

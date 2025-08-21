@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work | Niranjan</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0f12;
+      --card: #14161a;
+      --card-2: #1a1d22;
+      --text: #e8e8e8;
+      --muted: #a4a7ae;
+      --accent: #6ee7ff;
+      --accent-2: #c084fc;
+      --ring: #2a87ff33;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, #1b1f2a 0%, transparent 60%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    header.page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .title .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 24px 6px #6ee7ff22;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search, .pill {
+      background: var(--card);
+      border: 1px solid #2a2f36;
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+    }
+    .search:focus {
+      border-color: #355278;
+      box-shadow: 0 0 0 8px var(--ring);
+    }
+    .pill {
+      cursor: pointer;
+      user-select: none;
+    }
+    .pill[aria-pressed="true"], .pill:hover {
+      border-color: #3a3f46;
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      transform: translateY(-1px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .work-entry {
+      position: relative;
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      border: 1px solid #23262c;
+      border-radius: var(--radius);
+      padding: 18px 18px 14px;
+      box-shadow: var(--shadow);
+      overflow: clip;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      will-change: transform;
+      isolation: isolate;
+    }
+    .work-entry::before{
+      content: "";
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(600px 200px at 0% -20%, #6ee7ff08, transparent 60%);
+      z-index: 0;
+    }
+    .work-entry:hover { transform: translateY(-3px); border-color: #2d323a; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+
+    .work-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .work-title-box { display: flex; align-items: center; gap: 14px; }
+    .company-logo { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background:#0f1115; border:1px solid #262a31; }
+
+    h2 { margin: 0; font-size: 20px; letter-spacing: -0.01em; }
+    .company-name { color: var(--muted); margin-top: 2px; font-size: 14px; }
+    .date { color: #8b90a0; font-size: 13px; }
+
+    .bullets { margin: 10px 0 0; padding: 0 0 0 20px; }
+    .bullets li { margin-bottom: 10px; }
+
+    .tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 10px; border-radius: 999px; font-size: 12px; color: #dbe6ff;
+      background: linear-gradient(180deg, #1d2229, #181c22);
+      border: 1px solid #2a2f36; cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .tag:hover { transform: translateY(-1px); border-color: #3a3f46; }
+
+    .file-preview { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .file-card {
+      display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text);
+      padding: 10px 12px; border-radius: 12px; border: 1px solid #272b32; background: #14181f; transition: transform .15s ease, border-color .15s ease;
+    }
+    .file-card:hover { transform: translateY(-2px); border-color: #334; }
+    .file-icon { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border:1px solid #262a31; background:#0f1115; }
+
+    /* Expand/collapse */
+    .actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+    .btn {
+      background: #12151a; color: #dbe6ff; border: 1px solid #272b32; border-radius: 10px; padding: 8px 12px; cursor: pointer; font-weight: 600; font-size: 13px;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: #3a3f46; }
+
+    details {
+      margin-top: 10px;
+      border-top: 1px dashed #2a2f36;
+      padding-top: 10px;
+    }
+    details[open] summary .chev { transform: rotate(90deg); }
+    summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--muted); }
+    summary::-webkit-details-marker { display:none; }
+    .chev { width: 10px; height: 10px; border-right: 2px solid #8b90a0; border-top: 2px solid #8b90a0; transform: rotate(45deg); transition: transform .2s ease; }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page">
+      <div class="title"><span class="dot"></span> Work</div>
+      <div class="controls">
+        <input id="search" class="search" type="search" placeholder="Search roles, companies, skills…" aria-label="Search work entries" />
+        <button class="pill" data-filter="all" aria-pressed="true">All</button>
+        <button class="pill" data-filter="Python">Python</button>
+        <button class="pill" data-filter="LLMs">LLMs</button>
+        <button class="pill" data-filter="Derivatives">Derivatives</button>
+      </div>
+    </header>
+
+    <section id="work" class="grid">
+
+      <!-- GOOGLE -->
+      <article class="work-entry" data-tags="Python,LLMs,Data Handling,Sentiment Analysis">
+        <div class="work-header">
+          <div class="work-title-box">
+            <img src="icons/google_logo.png" alt="Google logo" class="company-logo" />
+            <div>
+              <h2>Risk Analyst</h2>
+              <p class="company-name">Google(As a part of Experiential Learning Project)</p>
+            </div>
+          </div>
+          <div class="actions">
+            <span class="date">January 2025 – March 2025</span>
+            <button class="btn" data-expand>Details</button>
+          </div>
+        </div>
+
+        <details>
+          <summary><span class="chev"></span> Highlights</summary>
+          <ul class="bullets">
+            <li>Built an AI-driven credit risk framework integrating NLP + financial modeling; covered 60+ banks/fintechs over six quarters using SEC filings, earnings calls, and call reports.</li>
+            <li>Engineered credit scoring using Google Gemini + Python; reached 39% prompt accuracy across trials and identified distressed banks in a 2008-style backtest.</li>
+            <li>Structured sentiment + dynamic weighting of 16 risk categories to produce 1–5 risk scores per institution, surfacing early deterioration signals.</li>
+          </ul>
+          <div class="file-preview">
+            <a class="file-card" href="docs/credit_risk_report.pdf" target="_blank" rel="noopener">
+              <img src="icons/pdf_icon.png" alt="PDF icon" class="file-icon" />
+              <span>Credit Risk Report (PDF)</span>
+            </a>
+          </div>
+        </details>
+
+        <div class="tags" aria-label="Skills">
+          <button class="tag" data-tag>Python</button>
+          <button class="tag" data-tag>LLMs</button>
+          <button class="tag" data-tag>Data Handling</button>
+          <button class="tag" data-tag>Sentiment Analysis</button>
+        </div>
+      </article>
+
+      <!-- TRADER -->
+      <article class="work-entry" data-tags="Python,Excel,Derivatives,Options trading,Fyers API">
+        <div class="work-header">
+          <div class="work-title-box">
+            <img src="icons/derivatives_trading_logo.png" alt="Derivatives trading logo" class="company-logo" />
+            <div>
+              <h2>Derivatives Trader</h2>
+              <p class="company-name">Self-employed, Part-time</p>
+            </div>
+          </div>
+          <div class="actions">
+            <span class="date">July 2022 – August 2024</span>
+            <button class="btn" data-expand>Details</button>
+          </div>
+        </div>
+
+        <details>
+          <summary><span class="chev"></span> Highlights</summary>
+          <ul class="bullets">
+            <li>Implemented monthly covered calls (Bankbees) and weekly option selling strategies with technical setups in a live self-managed portfolio.</li>
+            <li>Realized a cumulative return of <strong>36.4%</strong> since inception with strict risk constraints.</li>
+          </ul>
+        </details>
+
+        <div class="tags" aria-label="Skills">
+          <button class="tag" data-tag>Python</button>
+          <button class="tag" data-tag>Excel</button>
+          <button class="tag" data-tag>Derivatives</button>
+          <button class="tag" data-tag>Options trading</button>
+          <button class="tag" data-tag>Fyers API</button>
+        </div>
+      </article>
+
+      <!-- SANDFITS -->
+      <article class="work-entry" data-tags="OEE Analysis,Excel,Production line Analysis">
+        <div class="work-header">
+          <div class="work-title-box">
+            <img src="icons/sandfits_logo.png" alt="Sandfits logo" class="company-logo" />
+            <div>
+              <h2>Engineering Trainee Intern</h2>
+              <p class="company-name">Sandfits Foundries Pvt Ltd</p>
+            </div>
+          </div>
+          <div class="actions">
+            <span class="date">June 2022 – July 2022</span>
+            <button class="btn" data-expand>Details</button>
+          </div>
+        </div>
+
+        <details>
+          <summary><span class="chev"></span> Highlights</summary>
+          <ul class="bullets">
+            <li>Analyzed the production line and identified process enhancements for measurable efficiency gains.</li>
+            <li>Designed operator performance audit; recommendations improved overall productivity by ~8%.</li>
+          </ul>
+        </details>
+
+        <div class="tags" aria-label="Skills">
+          <button class="tag" data-tag>OEE Analysis</button>
+          <button class="tag" data-tag>Excel</button>
+          <button class="tag" data-tag>Production line Analysis</button>
+        </div>
+      </article>
+
+    </section>
+  </div>
+
+  <script>
+    // --- Tag filtering & search ---
+    const entries = [...document.querySelectorAll('.work-entry')];
+    const pills = [...document.querySelectorAll('.pill')];
+    const search = document.getElementById('search');
+
+    let activeFilter = 'all';
+
+    function applyFilters() {
+      const q = (search.value || '').toLowerCase().trim();
+      entries.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const tags = (card.getAttribute('data-tags') || '').split(',').map(s => s.trim());
+        const matchesText = q === '' || text.includes(q);
+        const matchesTag = activeFilter === 'all' || tags.includes(activeFilter);
+        card.style.display = (matchesText && matchesTag) ? '' : 'none';
+      });
+    }
+
+    pills.forEach(p => {
+      p.addEventListener('click', () => {
+        activeFilter = p.dataset.filter;
+        pills.forEach(btn => btn.setAttribute('aria-pressed', String(btn === p)));
+        applyFilters();
+      });
+    });
+    search.addEventListener('input', applyFilters);
+
+    // --- Expand buttons toggle <details> ---
+    document.querySelectorAll('[data-expand]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wrap = btn.closest('.work-entry');
+        const details = wrap.querySelector('details');
+        details.open = !details.open;
+        btn.textContent = details.open ? 'Hide' : 'Details';
+      });
+    });
+
+    // --- Click a skill tag to filter ---
+    document.querySelectorAll('[data-tag]').forEach(tagBtn => {
+      tagBtn.addEventListener('click', () => {
+        const label = tagBtn.textContent.trim();
+        activeFilter = label;
+        pills.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.filter === label)));
+        applyFilters();
+        // gentle focus state
+        tagBtn.blur();
+      });
+    });
+
+    // Initial filter apply
+    applyFilters();
+  </script>
+</body>
+</html>
